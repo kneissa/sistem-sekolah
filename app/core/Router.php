@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Controllers\StudentController;
+
 class Router
 {
 
@@ -12,12 +14,16 @@ class Router
 
         if ($method == 'GET' && $uri == '/students' ) {
             require_once './app/controllers/StudentController.php';
+            $controller = new StudentController();
+            $controller->index();
             return;
         }
 
          if ($method == 'GET' && $uri == '/students/create' ) {
-            echo '<h1>Tambah Siswa</h1>';
-            echo '<p>Menampilkan form tambah siswa</p>';
+            require_once './app/controllers/StudentController.php';
+            $controller = new StudentController();
+            $controller->create();
+           
             return;
         }
 
